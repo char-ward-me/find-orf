@@ -35,8 +35,10 @@ def main():
 
     args = parser.parse_args()
     print(args.sequence)
-    if args.reverse:
-        print("The DNA sequence will be searched for open reading frames in both the forward and reverse directions")
+    if args.reverse is True:
+        print(
+            "The DNA sequence will be searched for open reading frames in both "
+            + "the forward and reverse directions")
     else:
         print("The DNA sequence will be searched for open reading frames in the forward direction only")
 
