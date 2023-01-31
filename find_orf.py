@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-'''Search a string of text representing a DNA sequence for open reading frames'''
+'''Search a string of text representing a DNA sequence for open reading frames (genes)'''
 import argparse
 
 
@@ -12,6 +12,8 @@ class DNA:
 
     def __repr__(self) -> str:
         return self.sequence
+
+    ## Have a method to translate between DNA and RNA
 
 
 
