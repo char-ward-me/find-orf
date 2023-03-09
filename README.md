@@ -1,3 +1,3 @@
-# Python-scripts
+# find_orf
 
-A selection of example python scripts for carrying out various functions
+WIP: A script to find open reading frames (ORFs) in DNA sequences.
