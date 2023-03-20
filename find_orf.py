@@ -2,6 +2,8 @@
 '''Search a string of text representing a DNA sequence for open reading frames (genes)'''
 import argparse
 
+##TODO:move DNA class to separate module
+##TODO:remove argparse
 
 
 class DNA:
@@ -12,8 +14,11 @@ class DNA:
 
     def __repr__(self) -> str:
         return self.sequence
+    
+    def dnaLower(self):
+        self.sequence = self.sequence.lower()
+        return self
 
-    ## Have a method to translate between DNA and RNA
 
 
 
@@ -24,14 +29,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "sequence",
-        type=DNA,
+        type=str,
         help="Enter the DNA sequence you wish to search for open reading frames"
         )
 
     parser.add_argument(
         "reverse",
         type=bool,
-        default=True,
         help="Enter a boolean (True or False) indicating whether to search the reverse compliment of the sequence"
         )
 
@@ -43,6 +47,21 @@ def main():
             + "the forward and reverse directions")
     else:
         print("The DNA sequence will be searched for open reading frames in the forward direction only")
+
+    
+    seq = DNA(args.sequence, circular=args.reverse)
+    seq = seq.dnaLower()
+
+    if seq.circular == False:
+        start_codon = 'atg'
+        orfs = []
+        if start_codon not in seq.sequence:
+            print("No open reading frames in input sequence")
+        else:
+            print(seq.sequence.index(start_codon))
+
+    
+
 
 
 
