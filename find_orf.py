@@ -1,23 +1,11 @@
-# -*- coding: utf-8 -*-
 '''Search a string of text representing a DNA sequence for open reading frames (genes)'''
 import argparse
+import dna
 
-##TODO:move DNA class to separate module
 ##TODO:remove argparse
 
 
-class DNA:
-    '''DNA Class representing physical molecule of DNA. Sequence can be circular or linear.'''
-    def __init__(self, sequence, circular=True):
-        self.sequence = sequence
-        self.circular = circular
 
-    def __repr__(self) -> str:
-        return self.sequence
-    
-    def dnaLower(self):
-        self.sequence = self.sequence.lower()
-        return self
 
 
 
@@ -48,21 +36,17 @@ def main():
     else:
         print("The DNA sequence will be searched for open reading frames in the forward direction only")
 
-    
-    seq = DNA(args.sequence, circular=args.reverse)
-    seq = seq.dnaLower()
 
-    if seq.circular == False:
+    seq = dna.DNA(args.sequence, circular=args.reverse)
+
+
+    if seq.circular is False:
         start_codon = 'atg'
         orfs = []
         if start_codon not in seq.sequence:
             print("No open reading frames in input sequence")
         else:
             print(seq.sequence.index(start_codon))
-
-    
-
-
 
 
 if __name__ == "__main__":
